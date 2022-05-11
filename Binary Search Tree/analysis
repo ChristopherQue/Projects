@@ -1,0 +1,36 @@
+// Analysis Text
+
+template<typename T>
+int BST<T>::height(BSTNode *t)const {
+  int rightHeight, leftHeight;
+  if(t == nullptr)
+    leftHeight = rightHeight = 0;
+  else {
+    leftHeight = height(t->left) + 1;
+    rightHeight = height(t->right) + 1;
+  }
+  if(leftHeight > rightHeight)
+    return leftHeight;
+  else
+    return rightHeight;
+}
+
+Analysis: The worst-case scenario would be if the function had to go through
+the whole list it runs through. This scenario would make it run through n items.
+Therefore the worst-case time complexity for this function is O(n).
+
+template<typename T>
+void BST<T>::buildFromInputString(const string input) {
+  makeEmpty(root);
+  if(empty()) {
+    stringstream iss(input);
+    T inpt;
+    while (iss >> inpt)
+      insert(inpt);
+  }
+}
+
+Analysis: The worst-case time complexity would be if it had to get the the last
+line of the input that was coming in. Until it is done doing the input, it will
+keep going making the the function run O(n) times, which is the worst case.
+Therefore the worst-case time complexity for this function is O(n).
